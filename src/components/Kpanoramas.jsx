@@ -13,7 +13,7 @@ const Kpanoramas = () => {
                 }}>
                     <CardActionArea>
                         <CardContent>
-                            <CardMedia component="img" width={'100%'} height={200} image={'/src/assets/img/c24b53b8-cc9b-4cbe-babc-2b1504a7f1eb.png'} alt='imagen' />
+                            <CardMedia component="img" width={'100%'} height={200} image={'/src/assets/img/LE-SSERAFIM-1st-Album-UNFORGIVEN-Concept-Photos-documents-3.jpeg'} alt='imagen' />
                             <Typography variant='h3'>
                                 K-Panoramas
                             </Typography>

@@ -1,22 +1,15 @@
-import { useState } from 'react'
-
+import AppRoutes from './routes/AppRoutes'
 import './App.css'
-import ResponsiveAppBar from './components/ResponsiveAppBar'
-import About from './components/About'
-import Panoramas from './components/Panoramas'
-import Kpanoramas from './components/Kpanoramas'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <ResponsiveAppBar />
-      <About />
-      <h1>hola</h1>
-      <Panoramas />
-      <Kpanoramas />
-      
+
+      <AppRoutes />
+
     </>
   )
 }
