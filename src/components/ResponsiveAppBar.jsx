@@ -10,7 +10,7 @@ const ResponsiveAppBar = () => {
                 fontSize: 60,
                 alignItems: 'center'
             }} />
-            <Typography sx={{marginLeft:8}} variant='h3' className='mainTitle'>Panoramas</Typography>
+            <Typography sx={{marginLeft:3}} variant='h3' className='mainTitle'>Panoramas</Typography>
         </div>
     );
 };

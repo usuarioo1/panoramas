@@ -1,10 +1,12 @@
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Kpanoramas = () => {
     return (
         <Grid container justifyContent="center" mt={5}>
             <Grid item xs={12} sm={6} md={8}>
+                <Link to={'/kpanoramas'}>
                 <Card sx={{
                     transition: "0.2s",
                     "&:hover": {
@@ -20,6 +22,7 @@ const Kpanoramas = () => {
                         </CardContent>
                     </CardActionArea>
                 </Card>
+                </Link>
             </Grid>
         </Grid>
     )

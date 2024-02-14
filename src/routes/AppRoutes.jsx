@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from '../layout/Layout'
 import Home from '../components/Home'
 import ListaDePanoramas from '../components/ListaDePanoramas'
+import ListDeKpanoramas from '../components/ListDeKpanoramas'
 
 const AppRoutes = () => {
     return (
@@ -10,8 +11,7 @@ const AppRoutes = () => {
             <Route path='' element={<Layout />}>
                 <Route path='/' element={<Home />}/>
                 <Route path='panoramas' element={<ListaDePanoramas />} />
-
-
+                <Route path='kpanoramas' element={<ListDeKpanoramas />} />
             </Route>
         </Routes>
     )
