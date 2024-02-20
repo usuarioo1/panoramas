@@ -64,7 +64,7 @@ const ListDeKpanoramas = () => {
                     gap: 2,
                     overflow: 'hidden',
                     mt: 5,
-                    height: 250
+                    height: 300
                 }}>
                     <Img src={kpanorama.imagen} />
                     <Box>

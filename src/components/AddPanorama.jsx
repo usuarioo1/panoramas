@@ -29,16 +29,42 @@ const AddPanorama = () => {
         });
     };
 
+    const showAlertError = () => {
+
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No se pudo agregar el panorama, intenta denuevo 👌",
+        });
+    };
+
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+    
+        // Validación de campos vacíos
+        for (let field in formData) {
+            if (!formData[field]) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: `El campo "${field}" no puede estar vacío`,
+                });
+                return; // Detiene la ejecución de la función si algún campo está vacío
+            }
+        }
+    
         try {
             const response = await axios.post('http://localhost:3000/crearpanorama', formData);
             showAlert(); // Llama a la función showAlert después de enviar el formulario
             console.log(response.data); // Maneja la respuesta del backend como desees
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
+            showAlertError();
         }
     };
+    
 
     return (
         <div>
@@ -55,15 +81,16 @@ const AddPanorama = () => {
                     onSubmit={handleSubmit}
                     sx={{
                         '& > :not(style)': { m: 1, width: '25ch' },
+                        mt:3
                     }}
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField name="titulo" label="Panorama" variant="outlined" onChange={handleChange} />
-                    <TextField name="descripcion" label="Descripción" variant="outlined" onChange={handleChange} />
-                    <TextField name="fecha" label="Fecha" variant="outlined" onChange={handleChange} />
-                    <TextField name="lugar" label="Lugar" variant="outlined" onChange={handleChange} />
-                    <TextField name="imagen" label="imagen" variant="outlined" onChange={handleChange} />
+                    <TextField name="Titulo" label="Panorama" variant="outlined" required onChange={handleChange} />
+                    <TextField name="Descripcion" label="Descripción" variant="outlined" required onChange={handleChange} />
+                    <TextField name="Fecha" label="Fecha" variant="outlined" required onChange={handleChange} />
+                    <TextField name="Lugar" label="Lugar" variant="outlined" required onChange={handleChange} />
+                    <TextField name="Imagen" label="imagen" variant="outlined" required onChange={handleChange} />
                     <FormControl sx={{ width: '25ch' }}>
                         <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                         <Select
@@ -72,6 +99,7 @@ const AddPanorama = () => {
                             name="tipo"
                             label="Tipo"
                             onChange={handleChange}
+                            required
                         >
                             <MenuItem value={'P'}>P</MenuItem>
                             <MenuItem value={'K'}>K</MenuItem>
