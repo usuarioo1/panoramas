@@ -17,7 +17,7 @@ const ListDeKpanoramas = () => {
     const [kpanoramas, setKpanoramas] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/panoramas', {
+        axios.get('https://backpanoramas.onrender.com/panoramas', {
             params: {
                 tipo: 'P'  // Filtrar por panoramas de tipo "p"
             }
