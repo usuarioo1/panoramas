@@ -34,7 +34,7 @@ const ListDeKpanoramas = () => {
         <div>
             <Container sx={{ mt: 5, textAlign: 'center' }}>
                 <Typography variant='h3'>
-                    K-Panoramas
+                    Panoramas
                 </Typography>
 
                 <NavLink to="/" className="button">
