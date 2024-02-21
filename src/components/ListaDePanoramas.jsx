@@ -6,7 +6,7 @@ import AddPanorama from './AddPanorama';
 import { NavLink } from 'react-router-dom';
 import '../css/backButton.css';
 
-const ListDeKpanoramas = () => {
+const ListadePanoramas = () => {
     const Img = styled('img')({
         width: 150,
         height: '100%',
@@ -14,7 +14,7 @@ const ListDeKpanoramas = () => {
         objectPosition: 'center'
     });
 
-    const [kpanoramas, setKpanoramas] = useState([]);
+    const [panoramas, setPanoramas] = useState([]);
 
     useEffect(() => {
         axios.get('https://backpanoramas.onrender.com/panoramas', {
@@ -23,7 +23,7 @@ const ListDeKpanoramas = () => {
             }
         })
             .then(response => {
-                setKpanoramas(response.data.info);
+                setPanoramas(response.data.info);
             })
             .catch(error => {
                 console.error('Error al realizar la petición:', error);
@@ -34,7 +34,7 @@ const ListDeKpanoramas = () => {
         <div>
             <Container sx={{ mt: 5, textAlign: 'center' }}>
                 <Typography variant='h3'>
-                    Panoramas
+                    K-Panoramas
                 </Typography>
 
                 <NavLink to="/" className="button">
@@ -57,8 +57,8 @@ const ListDeKpanoramas = () => {
                 </NavLink>
             </Container>
 
-            {kpanoramas.map(kpanorama => (
-                <Paper key={kpanorama._id} sx={{
+            {panoramas.map(panorama => (
+                <Paper key={panorama._id} sx={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: 2,
@@ -66,13 +66,13 @@ const ListDeKpanoramas = () => {
                     mt: 5,
                     height: 300
                 }}>
-                    <Img src={kpanorama.imagen} />
+                    <Img src={panorama.imagen} />
                     <Box>
-                        <Typography variant='h4'>{kpanorama.titulo}</Typography>
-                        <Typography variant='h6'>Descripción: {kpanorama.descripcion}</Typography>
-                        <Typography variant='h6'>Fecha: {kpanorama.fecha}</Typography>
-                        <Typography variant='h6'>Lugar: {kpanorama.lugar}</Typography>
-                        <Typography variant='h6'>Tipo: {kpanorama.tipo}</Typography>
+                        <Typography variant='h4'>{panorama.titulo}</Typography>
+                        <Typography variant='h6'>Descripción: {panorama.descripcion}</Typography>
+                        <Typography variant='h6'>Fecha: {panorama.fecha}</Typography>
+                        <Typography variant='h6'>Lugar: {panorama.lugar}</Typography>
+                        <Typography variant='h6'>Tipo: {panorama.tipo}</Typography>
                     </Box>
                 </Paper>
             ))}
@@ -81,4 +81,4 @@ const ListDeKpanoramas = () => {
     );
 };
 
-export default ListDeKpanoramas;
+export default ListadePanoramas;

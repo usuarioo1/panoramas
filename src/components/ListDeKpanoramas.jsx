@@ -17,12 +17,14 @@ const ListDeKpanoramas = () => {
     const [kpanoramas, setKpanoramas] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/panoramas', {
+        console.log('Haciendo petición para panoramas tipo K');
+        axios.get('https://backpanoramas.onrender.com/panoramas', {
             params: {
                 tipo: 'K' // Filtrar por panoramas de tipo "k"
             }
         })
             .then(response => {
+                console.log('Respuesta de la API:', response.data.info);
                 setKpanoramas(response.data.info);
             })
             .catch(error => {
@@ -60,6 +62,7 @@ const ListDeKpanoramas = () => {
             </Container>
 
             {kpanoramas.map(kpanorama => (
+                
                 <Paper key={kpanorama._id} sx={{
                     display: 'flex',
                     alignItems: 'center',
