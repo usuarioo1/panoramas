@@ -86,11 +86,11 @@ const AddPanorama = () => {
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField name="Titulo" label="Título" variant="outlined" required onChange={handleChange} />
-                    <TextField name="Descripcion" label="Descripción" variant="outlined" required onChange={handleChange} />
-                    <TextField name="Fecha" label="Fecha" variant="outlined" required onChange={handleChange} />
-                    <TextField name="Lugar" label="Lugar" variant="outlined" required onChange={handleChange} />
-                    <TextField name="Imagen" label="imagen" variant="outlined" required onChange={handleChange} />
+                    <TextField name="titulo" label="Título" variant="outlined" required onChange={handleChange} />
+                    <TextField name="descripcion" label="Descripción" variant="outlined" required onChange={handleChange} />
+                    <TextField name="fecha" label="Fecha" variant="outlined" required onChange={handleChange} />
+                    <TextField name="lugar" label="Lugar" variant="outlined" required onChange={handleChange} />
+                    <TextField name="imagen" label="imagen" variant="outlined" required onChange={handleChange} />
                     <FormControl sx={{ width: '25ch' }}>
                         <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                         <Select
