@@ -56,7 +56,7 @@ const AddPanorama = () => {
         }
     
         try {
-            const response = await axios.post('http://localhost:3000/crearpanorama', formData);
+            const response = await axios.post('https://backpanoramas.onrender.com/crearpanorama', formData);
             showAlert(); // Llama a la función showAlert después de enviar el formulario
             console.log(response.data); // Maneja la respuesta del backend como desees
         } catch (error) {
