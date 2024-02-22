@@ -2,18 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from '@emotion/styled';
 import { Container, Typography, Paper, Box } from '@mui/material';
-import AddPanorama from './AddPanorama';
 import { NavLink } from 'react-router-dom';
 import '../css/backButton.css';
+import Skeleton from 'react-loading-skeleton';
 
 const ListadePanoramas = () => {
-    const Img = styled('img')({
-        width: 150,
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'center'
-    });
-
+    const [loading, setLoading] = useState(true);
     const [panoramas, setPanoramas] = useState([]);
 
     useEffect(() => {
@@ -24,11 +18,19 @@ const ListadePanoramas = () => {
         })
             .then(response => {
                 setPanoramas(response.data.info);
+                setLoading(false); // Indicar que la carga ha finalizado cuando se obtienen los datos
             })
             .catch(error => {
                 console.error('Error al realizar la petición:', error);
             });
     }, []);
+
+    const Img = styled('img')({
+        width: 150,
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: 'center'
+    });
 
     return (
         <div>
@@ -57,8 +59,9 @@ const ListadePanoramas = () => {
                 </NavLink>
             </Container>
 
-            {panoramas.map(panorama => (
-                <Paper key={panorama._id} sx={{
+            {loading && panoramas.length === 0 ? (
+                // Renderizar el esqueleto mientras se cargan los datos
+                <Paper sx={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: 2,
@@ -66,17 +69,37 @@ const ListadePanoramas = () => {
                     mt: 5,
                     height: 300
                 }}>
-                    <Img src={panorama.imagen} />
+                    <Skeleton variant="rectangular" width={200} height={300} />
                     <Box>
-                        <Typography variant='h4'>{panorama.titulo}</Typography>
-                        <Typography variant='h6'>Descripción: {panorama.descripcion}</Typography>
-                        <Typography variant='h6'>Fecha: {panorama.fecha}</Typography>
-                        <Typography variant='h6'>Lugar: {panorama.lugar}</Typography>
-                        <Typography variant='h6'>Tipo: {panorama.tipo}</Typography>
+                        <Typography variant='h4'><Skeleton /></Typography>
+                        <Typography variant='h6'>Descripción: <Skeleton /></Typography>
+                        <Typography variant='h6'>Fecha: <Skeleton /></Typography>
+                        <Typography variant='h6'>Lugar: <Skeleton /></Typography>
+                        <Typography variant='h6'>Tipo: <Skeleton /></Typography>
                     </Box>
                 </Paper>
-            ))}
-            <AddPanorama />
+            ) : (
+                // Renderizar los datos reales una vez que están disponibles
+                panoramas.map(panorama => (
+                    <Paper key={panorama._id} sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 2,
+                        overflow: 'hidden',
+                        mt: 5,
+                        height: 300
+                    }}>
+                        <Img src={panorama.imagen} />
+                        <Box>
+                            <Typography variant='h4'>{panorama.titulo}</Typography>
+                            <Typography variant='h6'>Descripción: {panorama.descripcion}</Typography>
+                            <Typography variant='h6'>Fecha: {panorama.fecha}</Typography>
+                            <Typography variant='h6'>Lugar: {panorama.lugar}</Typography>
+                            <Typography variant='h6'>Tipo: {panorama.tipo}</Typography>
+                        </Box>
+                    </Paper>
+                ))
+            )}
         </div>
     );
 };
