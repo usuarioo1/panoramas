@@ -1,5 +1,7 @@
+
 import { Paper, Typography, Grid } from '@mui/material';
 import React from 'react';
+import Temperatura from './Temperatura';
 
 const About = () => {
     return (
@@ -9,7 +11,9 @@ const About = () => {
                     <Typography sx={{ fontSize: 30, textAlign: 'center' }}>
                         App dedicada para organizar panoramas
                     </Typography>
+                    
                 </Paper>
+                <Temperatura />
             </Grid>
         </Grid>
     );
