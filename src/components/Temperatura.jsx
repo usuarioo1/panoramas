@@ -32,7 +32,7 @@ const Temperatura = () =>
                         <Typography variant='h6' align='center'>{climaData.Estacion}</Typography>
                         <Typography variant='h6' align='center'>Temperatura: {climaData.Temp}</Typography>
                         <Typography variant='h6' align='center'>Estado: {climaData.Estado}</Typography>
-                        <img src={climaData.Icono} alt="" />
+                        {/* <img src={climaData.Icono} alt="" /> */}
                         {/* Mostrar otros datos del clima según la estructura de la respuesta */}
                     </Paper>
                 )}
